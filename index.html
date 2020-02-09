@@ -26,5 +26,18 @@
 <body>
     <crs-visualization></crs-visualization>
     <script type="module" src="src/index.js"></script>
+
+    <script type="module">
+        import {getData} from "./data.js";
+
+        const chart = document.querySelector("crs-visualization");
+
+        const fn = () => {
+            chart.removeEventListener("ready", fn);
+            chart.setData(getData(10));
+        };
+
+        chart.addEventListener("ready", fn);
+    </script>
 </body>
 </html>
